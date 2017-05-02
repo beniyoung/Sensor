@@ -12,6 +12,7 @@
 	.global main
 	.extern usart_init
 	.extern test_Data
+	.extern dht_init 
 	.org 0x0000
 
 main:
@@ -22,18 +23,19 @@ main:
 		out		_SPL, r28
 		
 		call	init
-		call	usart_init 	
-
-		
+		call	usart_init 
+				
 		
 loop:	
 		call 	toggle				
 		call	delay 
 		call	delay		
+		;call  	dht_init
 		call	test_Data 
 		call	delay 
 		call	delay 
 		call	delay
+		;call   delay2seconds  
 		rjmp	loop
 		
 		

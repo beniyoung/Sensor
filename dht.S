@@ -3,6 +3,9 @@
 ; Date: April 28, 2017
 #include "config.inc"
 
+		.section        .text
+        .global         dht_init 
+		
 
 ;DHT Initilize
 ;This is going to be a pain, since it involves timing so for now its all theory lol
@@ -16,22 +19,35 @@ dht_init:
 	
 
 	; Setup Pin and Direction
-	
+	ldi		r16, DHT_DIR_PIN  
+	out 	DHT_DIR, r16	
 	
 	; Setup Port
-	
+	ldi		r16, DHT_PIN
+	out		DHT_PORT, r16
 	
 	; Delay 20ms
-	
+	rcall	delay20ms 
 	
 	; Change Port Direction
+	ldi		r16, DHT_PIN
+	out		DHT_PORT, r16
 
 	; Delay 10us
+	rcall	delay10us 
 	
 	; Change Pin Direction and PORT
+	ldi		r16, DHT_DIR_PIN 
+	out		DHT_DIR, r16
+	ldi		r16, DHT_PIN
+	out		DHT_PORT, r16
 	
+	;Handshake from high to low
 	
-	; READ pulses
+	;get 1 back
+	
+	;Handshake from high to low
+	
 
 	ret
 	
@@ -59,7 +75,7 @@ dec_ascii:
 
 	ret
 	
-; delay of 20ms
+; delay of 20ms 
 delay20ms:
 
 	ret

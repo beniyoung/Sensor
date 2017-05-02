@@ -73,7 +73,7 @@ Disassembly of section .text:
   f0:	00 e0       	ldi	r16, 0x00	; 0
   f2:	0c bf       	out	0x3c, r16	; 60
   f4:	0e 94 80 00 	call	0x100	; 0x100 <main>
-  f8:	0c 94 f3 00 	jmp	0x1e6	; 0x1e6 <_exit>
+  f8:	0c 94 06 01 	jmp	0x20c	; 0x20c <_exit>
 
 000000fc <__bad_interrupt>:
   fc:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -84,13 +84,13 @@ Disassembly of section .text:
  104:	de bf       	out	0x3e, r29	; 62
  106:	cd bf       	out	0x3d, r28	; 61
  108:	0e 94 97 00 	call	0x12e	; 0x12e <init>
- 10c:	0e 94 b0 00 	call	0x160	; 0x160 <usart_init>
+ 10c:	0e 94 c3 00 	call	0x186	; 0x186 <usart_init>
 
 00000110 <loop>:
  110:	0e 94 a1 00 	call	0x142	; 0x142 <toggle>
  114:	0e 94 a6 00 	call	0x14c	; 0x14c <delay>
  118:	0e 94 a6 00 	call	0x14c	; 0x14c <delay>
- 11c:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <test_Data>
+ 11c:	0e 94 e7 00 	call	0x1ce	; 0x1ce <test_Data>
  120:	0e 94 a6 00 	call	0x14c	; 0x14c <delay>
  124:	0e 94 a6 00 	call	0x14c	; 0x14c <delay>
  128:	0e 94 a6 00 	call	0x14c	; 0x14c <delay>
@@ -125,82 +125,115 @@ Disassembly of section .text:
  15c:	c1 f7       	brne	.-16     	; 0x14e <delay+0x2>
  15e:	08 95       	ret
 
-00000160 <usart_init>:
- 160:	10 e0       	ldi	r17, 0x00	; 0
- 162:	07 e6       	ldi	r16, 0x67	; 103
- 164:	10 93 c5 00 	sts	0x00C5, r17	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7000c5>
- 168:	00 93 c4 00 	sts	0x00C4, r16	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7000c4>
- 16c:	00 e0       	ldi	r16, 0x00	; 0
- 16e:	00 93 c0 00 	sts	0x00C0, r16	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7000c0>
- 172:	08 e1       	ldi	r16, 0x18	; 24
- 174:	00 93 c1 00 	sts	0x00C1, r16	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7000c1>
- 178:	06 e8       	ldi	r16, 0x86	; 134
- 17a:	00 93 c2 00 	sts	0x00C2, r16	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7000c2>
+00000160 <dht_init>:
+ 160:	02 e0       	ldi	r16, 0x02	; 2
+ 162:	0a b9       	out	0x0a, r16	; 10
+ 164:	02 e0       	ldi	r16, 0x02	; 2
+ 166:	0b b9       	out	0x0b, r16	; 11
+ 168:	0c d0       	rcall	.+24     	; 0x182 <delay20ms>
+ 16a:	02 e0       	ldi	r16, 0x02	; 2
+ 16c:	0b b9       	out	0x0b, r16	; 11
+ 16e:	0a d0       	rcall	.+20     	; 0x184 <delay10us>
+ 170:	02 e0       	ldi	r16, 0x02	; 2
+ 172:	0a b9       	out	0x0a, r16	; 10
+ 174:	02 e0       	ldi	r16, 0x02	; 2
+ 176:	0b b9       	out	0x0b, r16	; 11
+ 178:	08 95       	ret
+
+0000017a <read_pulse>:
+ 17a:	08 95       	ret
+
+0000017c <store_bits>:
+ 17c:	08 95       	ret
+
+0000017e <cvrt_dec>:
  17e:	08 95       	ret
 
-00000180 <send_byte>:
+00000180 <dec_ascii>:
+ 180:	08 95       	ret
+
+00000182 <delay20ms>:
+ 182:	08 95       	ret
+
+00000184 <delay10us>:
+ 184:	08 95       	ret
+
+00000186 <usart_init>:
+ 186:	10 e0       	ldi	r17, 0x00	; 0
+ 188:	07 e6       	ldi	r16, 0x67	; 103
+ 18a:	10 93 c5 00 	sts	0x00C5, r17	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7000c5>
+ 18e:	00 93 c4 00 	sts	0x00C4, r16	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7000c4>
+ 192:	00 e0       	ldi	r16, 0x00	; 0
+ 194:	00 93 c0 00 	sts	0x00C0, r16	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7000c0>
+ 198:	08 e1       	ldi	r16, 0x18	; 24
+ 19a:	00 93 c1 00 	sts	0x00C1, r16	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7000c1>
+ 19e:	06 e8       	ldi	r16, 0x86	; 134
+ 1a0:	00 93 c2 00 	sts	0x00C2, r16	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7000c2>
+ 1a4:	08 95       	ret
+
+000001a6 <send_byte>:
 	...
 
-00000182 <sb2>:
- 182:	00 91 c0 00 	lds	r16, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7000c0>
- 186:	05 ff       	sbrs	r16, 5
- 188:	fc cf       	rjmp	.-8      	; 0x182 <sb2>
- 18a:	10 93 c6 00 	sts	0x00C6, r17	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7000c6>
- 18e:	00 00       	nop
- 190:	08 95       	ret
+000001a8 <sb2>:
+ 1a8:	00 91 c0 00 	lds	r16, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7000c0>
+ 1ac:	05 ff       	sbrs	r16, 5
+ 1ae:	fc cf       	rjmp	.-8      	; 0x1a8 <sb2>
+ 1b0:	10 93 c6 00 	sts	0x00C6, r17	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7000c6>
+ 1b4:	00 00       	nop
+ 1b6:	08 95       	ret
 
-00000192 <send_bytes>:
+000001b8 <send_bytes>:
 	...
 
-00000194 <sb1>:
- 194:	1a 91       	ld	r17, -Y
- 196:	f4 df       	rcall	.-24     	; 0x180 <send_byte>
- 198:	3a 95       	dec	r19
- 19a:	e1 f7       	brne	.-8      	; 0x194 <sb1>
- 19c:	08 95       	ret
+000001ba <sb1>:
+ 1ba:	1a 91       	ld	r17, -Y
+ 1bc:	f4 df       	rcall	.-24     	; 0x1a6 <send_byte>
+ 1be:	3a 95       	dec	r19
+ 1c0:	e1 f7       	brne	.-8      	; 0x1ba <sb1>
+ 1c2:	08 95       	ret
 
-0000019e <send_cr>:
- 19e:	1d e0       	ldi	r17, 0x0D	; 13
- 1a0:	ef df       	rcall	.-34     	; 0x180 <send_byte>
- 1a2:	1a e0       	ldi	r17, 0x0A	; 10
- 1a4:	ed df       	rcall	.-38     	; 0x180 <send_byte>
- 1a6:	08 95       	ret
+000001c4 <send_cr>:
+ 1c4:	1d e0       	ldi	r17, 0x0D	; 13
+ 1c6:	ef df       	rcall	.-34     	; 0x1a6 <send_byte>
+ 1c8:	1a e0       	ldi	r17, 0x0A	; 10
+ 1ca:	ed df       	rcall	.-38     	; 0x1a6 <send_byte>
+ 1cc:	08 95       	ret
 
-000001a8 <test_Data>:
- 1a8:	00 00       	nop
- 1aa:	35 e0       	ldi	r19, 0x05	; 5
- 1ac:	d2 e0       	ldi	r29, 0x02	; 2
- 1ae:	c0 e0       	ldi	r28, 0x00	; 0
- 1b0:	08 e6       	ldi	r16, 0x68	; 104
- 1b2:	09 93       	st	Y+, r16
- 1b4:	07 e6       	ldi	r16, 0x67	; 103
- 1b6:	09 93       	st	Y+, r16
- 1b8:	0e e2       	ldi	r16, 0x2E	; 46
- 1ba:	09 93       	st	Y+, r16
- 1bc:	06 e6       	ldi	r16, 0x66	; 102
- 1be:	09 93       	st	Y+, r16
- 1c0:	00 e2       	ldi	r16, 0x20	; 32
- 1c2:	09 93       	st	Y+, r16
- 1c4:	e6 df       	rcall	.-52     	; 0x192 <send_bytes>
- 1c6:	eb df       	rcall	.-42     	; 0x19e <send_cr>
- 1c8:	35 e0       	ldi	r19, 0x05	; 5
- 1ca:	d2 e0       	ldi	r29, 0x02	; 2
- 1cc:	c1 e0       	ldi	r28, 0x01	; 1
- 1ce:	04 e6       	ldi	r16, 0x64	; 100
- 1d0:	09 93       	st	Y+, r16
- 1d2:	03 e6       	ldi	r16, 0x63	; 99
- 1d4:	09 93       	st	Y+, r16
- 1d6:	0e e2       	ldi	r16, 0x2E	; 46
+000001ce <test_Data>:
+ 1ce:	00 00       	nop
+ 1d0:	35 e0       	ldi	r19, 0x05	; 5
+ 1d2:	d2 e0       	ldi	r29, 0x02	; 2
+ 1d4:	c0 e0       	ldi	r28, 0x00	; 0
+ 1d6:	08 e6       	ldi	r16, 0x68	; 104
  1d8:	09 93       	st	Y+, r16
- 1da:	02 e6       	ldi	r16, 0x62	; 98
+ 1da:	07 e6       	ldi	r16, 0x67	; 103
  1dc:	09 93       	st	Y+, r16
- 1de:	01 e6       	ldi	r16, 0x61	; 97
+ 1de:	0e e2       	ldi	r16, 0x2E	; 46
  1e0:	09 93       	st	Y+, r16
- 1e2:	d7 df       	rcall	.-82     	; 0x192 <send_bytes>
- 1e4:	08 95       	ret
+ 1e2:	06 e6       	ldi	r16, 0x66	; 102
+ 1e4:	09 93       	st	Y+, r16
+ 1e6:	00 e2       	ldi	r16, 0x20	; 32
+ 1e8:	09 93       	st	Y+, r16
+ 1ea:	e6 df       	rcall	.-52     	; 0x1b8 <send_bytes>
+ 1ec:	eb df       	rcall	.-42     	; 0x1c4 <send_cr>
+ 1ee:	35 e0       	ldi	r19, 0x05	; 5
+ 1f0:	d2 e0       	ldi	r29, 0x02	; 2
+ 1f2:	c1 e0       	ldi	r28, 0x01	; 1
+ 1f4:	04 e6       	ldi	r16, 0x64	; 100
+ 1f6:	09 93       	st	Y+, r16
+ 1f8:	03 e6       	ldi	r16, 0x63	; 99
+ 1fa:	09 93       	st	Y+, r16
+ 1fc:	0e e2       	ldi	r16, 0x2E	; 46
+ 1fe:	09 93       	st	Y+, r16
+ 200:	02 e6       	ldi	r16, 0x62	; 98
+ 202:	09 93       	st	Y+, r16
+ 204:	01 e6       	ldi	r16, 0x61	; 97
+ 206:	09 93       	st	Y+, r16
+ 208:	d7 df       	rcall	.-82     	; 0x1b8 <send_bytes>
+ 20a:	08 95       	ret
 
-000001e6 <_exit>:
- 1e6:	f8 94       	cli
+0000020c <_exit>:
+ 20c:	f8 94       	cli
 
-000001e8 <__stop_program>:
- 1e8:	ff cf       	rjmp	.-2      	; 0x1e8 <__stop_program>
+0000020e <__stop_program>:
+ 20e:	ff cf       	rjmp	.-2      	; 0x20e <__stop_program>
