@@ -1,6 +1,6 @@
 ; configuration for blink
 #include <avr/io.h>
-#include "../include/AVRSpecialRegs.inc"
+#include "./include/AVRSpecialRegs.inc"
 
 #define LED_PIN     7       // Mega board LED
 //#define LED_PIN     5     // UNO board LED
