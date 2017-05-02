@@ -31,6 +31,19 @@
 ; DDRD: 0x0A (0x2A)
 #define _DDRD   _SFR_IO_ADDR(DDRD)
 
+; PORTE -------------------------------------
+; PINE: 
+#define _PORTE _SFR_IO_ADDR(PORTE)
+
+; DDRE --------------------------------------
+#define _DDRE  _SFR_IO_ADDR(DDRE)
+
+; PINE --------------------------------------
+#define _PINE  _SFR_IO_ADDR(PINE)
+
+; DE2 ---------------------------------------
+#define _PE4   _SFR_IO_ADDR(PE4)
+
 ; PORTD: 0x0B (0x2B)
 #define _PORTD  _SFR_IO_ADDR(PORTD)
 

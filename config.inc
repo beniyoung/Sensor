@@ -18,10 +18,10 @@
 
 // Testing different mapping 
 #define	DHT_PIN		2
-#define DHT_DIR 	_DDRD
-#define	DHT_PORT	_PORTD
-#define DHT_INPORT  _PIND
-#define DHT_DIR_PIN DD2
+#define DHT_DIR 	_DDRE
+#define	DHT_PORT	_PORTE
+#define DHT_INPORT  _PINE
+#define DHT_DIR_PIN _PE4
 
 #define	XTAL 16000000
 #define baudrate 9600				    // from datasheet, the equation for Asynchronous Normal mode

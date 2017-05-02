@@ -126,18 +126,18 @@ Disassembly of section .text:
  15e:	08 95       	ret
 
 00000160 <dht_init>:
- 160:	02 e0       	ldi	r16, 0x02	; 2
- 162:	0a b9       	out	0x0a, r16	; 10
+ 160:	04 ee       	ldi	r16, 0xE4	; 228
+ 162:	0d b9       	out	0x0d, r16	; 13
  164:	02 e0       	ldi	r16, 0x02	; 2
- 166:	0b b9       	out	0x0b, r16	; 11
+ 166:	0e b9       	out	0x0e, r16	; 14
  168:	0c d0       	rcall	.+24     	; 0x182 <delay20ms>
  16a:	02 e0       	ldi	r16, 0x02	; 2
- 16c:	0b b9       	out	0x0b, r16	; 11
+ 16c:	0e b9       	out	0x0e, r16	; 14
  16e:	0a d0       	rcall	.+20     	; 0x184 <delay10us>
- 170:	02 e0       	ldi	r16, 0x02	; 2
- 172:	0a b9       	out	0x0a, r16	; 10
+ 170:	04 ee       	ldi	r16, 0xE4	; 228
+ 172:	0d b9       	out	0x0d, r16	; 13
  174:	02 e0       	ldi	r16, 0x02	; 2
- 176:	0b b9       	out	0x0b, r16	; 11
+ 176:	0e b9       	out	0x0e, r16	; 14
  178:	08 95       	ret
 
 0000017a <read_pulse>:
