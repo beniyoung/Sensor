@@ -16,6 +16,16 @@
 #define	SENSOR_DIR	_DDRE
 #define SENSOR_PORT	_PORTE
 
+// Testing different mapping 
+#define	DHT_PIN		2
+#define DHT_DIR 	_DDRD
+#define	DHT_PORT	_PORTD
+#define DHT_INPORT  _PIND
+#define DHT_DIR_PIN DD2
+
 #define	XTAL 16000000
-#define baudrate 9600				
-#define	baud ((XTAL/(16*baudrate)) - 1)
+#define baudrate 9600				    // from datasheet, the equation for Asynchronous Normal mode
+#define	baud ((XTAL/(16*baudrate)) - 1) // Baud Rate Generator
+
+
+

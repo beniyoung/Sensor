@@ -1,3 +1,9 @@
+; DHT for AVR
+; Author: Beni Young
+; Date: April 28, 2017
+;; Used Professors aBlink for initial setup for testing
+;; temper_tst and humid_tst data is in usart.S for now 
+
 #include "config.inc"
 
 

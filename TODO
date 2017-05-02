@@ -9,7 +9,7 @@ TODO:
 2. Get pulse reading
 3. convert binary reading to decimal
 4. convert decimal to ascii for usart
-
+5. store temperature and humidity data
 
 
 Completed:
