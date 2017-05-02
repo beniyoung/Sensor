@@ -14,7 +14,7 @@ PORT	= COM4
 #PORT	= /dev/cu.usbmodem1421
 
 # uncomment one of these lines
-MAKE_BASE = ../
+MAKE_BASE = ./
 #MAKE_BASE = /usr/local/
 
 include $(MAKE_BASE)include/AVRMakefile.mak
