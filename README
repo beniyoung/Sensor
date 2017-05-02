@@ -1,0 +1,21 @@
+Beni Young
+beni.young@g.austincc.edu
+COSC2325 002
+GROUP2 ALPHA TEAM
+
+
+The overall goal is to get reading from DHT11 sensor and have the data send to either the LCD or USART.
+Most of the files uploaded is what I've had on my computer, and decided to put in this public repository
+for now. When I have access to the Group2 repository, I will upload. This part that I'm working has been solo
+because of not having access to the group repository, so I have some stuff already done but dont have commits
+attached to them yet. Which is why i started this repo since trying to go back to working versions is hard
+without it :)
+
+The COM port needs to be set in Makefile
+
+Command for Windows 10:
+
+mingw32-make
+
+mingw32-make load
+
