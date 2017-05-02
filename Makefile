@@ -1,0 +1,20 @@
+# Makefile for DHT11 Test with output to USART0
+
+TARGET	= dht
+
+INTTBL	= FALSE
+
+# uncomment one of these lines and check for your system:
+# BOARD   = UNO
+BOARD  = MEGA
+
+# uncomment one of these linesand check for your system:
+PORT	= COM4
+#PORT	= /dev/ttyACM0
+#PORT	= /dev/cu.usbmodem1421
+
+# uncomment one of these lines
+MAKE_BASE = ../
+#MAKE_BASE = /usr/local/
+
+include $(MAKE_BASE)include/AVRMakefile.mak
